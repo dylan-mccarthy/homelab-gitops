@@ -61,7 +61,7 @@ jobs:
           "RepositoryAuthentication":${{ github.event.inputs.GIT_AUTHENTICATION }},
           "ManifestFile":"${{ github.event.inputs.MANIFEST_FILE }}",
           "AdditionalFiles":[],
-          "AutoUpdate":{"ForceUpdate":false,"Interval":"5m"}
+          "AutoUpdate":{"ForceUpdate":true,"Interval":"5m"}
         }
         EOF
       env:
