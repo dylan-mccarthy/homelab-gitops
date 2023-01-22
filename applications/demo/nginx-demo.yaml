@@ -30,4 +30,4 @@ spec:
       - key: "env"
         operator: "Equal"
         value: "arm64"
-        effect: "NoScheule"
+        effect: "NoSchedule"
