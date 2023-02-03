@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: FullStackDemo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-svelte
+  namespace: FullStackDemo
+  labels:
+    app: frontend-svelte
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-svelte
+  template:
+    metadata:
+      labels:
+        app: frontend-svelte
+    spec:
+      containers:
+      - name: frontend
+        image: dylanmccarthy/frontend:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+
