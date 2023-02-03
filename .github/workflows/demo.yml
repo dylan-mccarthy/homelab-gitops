@@ -23,7 +23,7 @@ jobs:
         {
           "Namespace":"",
           "StackName":"fullstackdemo",
-          "RepositoryURL":"https://github.com/Navatalin/homelab-gitops",
+          "RepositoryURL":"https://github.com/dylan-mccarthy/homelab-gitops",
           "RepositoryReferenceName":"refs/heads/main",
           "RepositoryUsername":"",
           "RepositoryPassword":"${GIT_PAT}",
