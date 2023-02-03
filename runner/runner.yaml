@@ -6,7 +6,7 @@ metadata:
 spec:
   template:
     spec:
-      organization: portainer
+      organization: dylan-mccarthy
       labels:
       - portainer-runner
 ---
@@ -25,5 +25,4 @@ spec:
   - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
     repositoryNames:
     # A repository name is the REPO part of `github.com/OWNER/REPO`
-    - tia
-    - examples
+    - homelab-gitops
