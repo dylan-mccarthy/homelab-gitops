@@ -1,0 +1,38 @@
+on:
+  workflow_dispatch:
+    
+
+
+name: 'Deploy Svelte Frontend'
+
+jobs:
+  portainer_job:
+    runs-on: [ self-hosted ]
+    name: portainerjob
+    steps:
+    - name: "[Portainer] Deploy a Kubernetes application"
+      shell: bash
+      run: |
+        curl \
+          "https://portainer.portainer:9443/api/stacks?endpointId=1&method=repository&type=3" \
+          --request POST \
+          --insecure \
+          --header "x-api-key: ${PORTAINER_API_KEY}" \
+          --header 'Content-Type: application/json' \
+          --data-binary @- << EOF
+        {
+          "Namespace":"",
+          "StackName":"fullstackdemo",
+          "RepositoryURL":"https://github.com/Navatalin/homelab-gitops",
+          "RepositoryReferenceName":"refs/heads/main",
+          "RepositoryUsername":"",
+          "RepositoryPassword":"${GIT_PAT}",
+          "RepositoryAuthentication":false,
+          "ManifestFile":"./applications/demo/frontend.yaml",
+          "AdditionalFiles":[],
+          "AutoUpdate":{"ForceUpdate":true,"Interval":"5m"}
+        }
+        EOF
+      env:
+        PORTAINER_API_KEY: ${{ secrets.PORTAINER_API_KEY }}
+        GIT_PAT: ${{ secrets.GIT_PAT }}

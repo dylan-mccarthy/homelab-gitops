@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: FullStackDemo
+  name: fullstackdemo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-svelte
-  namespace: FullStackDemo
+  namespace: fullstackdemo
   labels:
     app: frontend-svelte
 spec:
